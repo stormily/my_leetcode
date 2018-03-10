@@ -24,13 +24,13 @@ void sortCharInfo(struct CharInfo charinfo[], int begin, int end, Compfun comp)
 
 	tmp = charinfo[begin]; /* 结构体可以用等号赋值, 相当于memcpy */
 	while (i < j) {
-		while (i < j && charinfo[j].num <= tmp.num)
+		while (comp(i, j) && charinfo[j].num <= tmp.num)
 			j--;
-		if (i < j)
+		if (comp(i, j))
 			charinfo[i++] = charinfo[j];
-		while (i < j && charinfo[i].num > tmp.num)
+		while (comp(i, j) && comp(tmp.num, charinfo[i].num))
 			i++;
-		if (i < j)
+		if (comp(i, j))
 			charinfo[j--] = charinfo[i];
 	}
 	charinfo[i] = tmp;
