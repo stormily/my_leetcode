@@ -11,7 +11,7 @@ typedef int(*Compfun)(struct CharInfo *a, struct CharInfo *b);
 
 /* 排序的比较函数 */
 int comp(struct CharInfo *a, struct CharInfo *b) {
-	return a->num < b->num;
+	return a->num > b->num;
 }
 
 /* 快排, 比较函数可通过形参传入 */
@@ -24,13 +24,13 @@ void sortCharInfo(struct CharInfo charinfo[], int begin, int end, Compfun comp)
 
 	tmp = charinfo[begin]; /* 结构体可以用等号赋值, 相当于memcpy */
 	while (i < j) {
-		while (comp(i, j) && charinfo[j].num <= tmp.num)
+		while (i < j && comp(&tmp, &charinfo[j]))
 			j--;
-		if (comp(i, j))
+		if (i < j)
 			charinfo[i++] = charinfo[j];
-		while (comp(i, j) && comp(tmp.num, charinfo[i].num))
+		while (i < j && comp(&charinfo[i], &tmp))
 			i++;
-		if (comp(i, j))
+		if (i < j)
 			charinfo[j--] = charinfo[i];
 	}
 	charinfo[i] = tmp;
