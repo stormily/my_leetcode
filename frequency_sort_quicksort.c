@@ -1,5 +1,5 @@
-#include "stdafx.h"
-
+#include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 struct CharInfo {
@@ -24,11 +24,11 @@ void sortCharInfo(struct CharInfo charinfo[], int begin, int end, Compfun comp)
 
 	tmp = charinfo[begin]; /* 结构体可以用等号赋值, 相当于memcpy */
 	while (i < j) {
-		while (i < j && comp(&tmp, &charinfo[j]))
+		while (i < j && !comp(&tmp, &charinfo[j]))
 			j--;
 		if (i < j)
 			charinfo[i++] = charinfo[j];
-		while (i < j && comp(&charinfo[i], &tmp))
+		while (i < j && comp(&tmp, &charinfo[j]))
 			i++;
 		if (i < j)
 			charinfo[j--] = charinfo[i];
@@ -86,7 +86,7 @@ char *frequencySort(char *s) {
 }
 
 int main() {
-	char test[] = "hello";
+	char test[] = "tree";
 	printf("%s\n", test);
 	char *re = frequencySort(test);
 	printf("%s\n", re);
