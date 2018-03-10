@@ -15,6 +15,7 @@ bool isPalindrome(int x)
 
 	return x == re;
 }
+
 int main()
 {
 	printf("%d\n", isPalindrome(32213));
