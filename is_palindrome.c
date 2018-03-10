@@ -8,18 +8,15 @@ bool isPalindrome(int x)
 	if (x < 0)
 		return false;
 
-	while (tmp > 0){
+	while (tmp > 0) {
 		re = re * 10 + tmp % 10;
 		tmp = tmp / 10;
 	}
-	
+
 	return x == re;
 }
-
 int main()
 {
-	int x = 32213;
-
-	printf("%d\n", isPalindrome(x));
+	printf("%d\n", isPalindrome(32213));
 	return 0;
 }
