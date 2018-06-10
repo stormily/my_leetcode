@@ -23,7 +23,7 @@ void select_sort(int a[], int n)
 			printf("第%d趟排序结果为:\n", i + 1);
 			for (m = 0; m < n; m++){
 				if (m > 0){
-					printf("");
+					printf(" ");
 				}
 				printf("%d", a[m]);
 			}
@@ -45,7 +45,7 @@ int main()
 		printf("最终排序结果为:\n");
 		for (i = 0; i < n; i++){
 			if (i > 0) {
-				printf("");
+				printf(" ");
 			}
 			printf("%d", a[i]);
 		}
